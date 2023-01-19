@@ -32,12 +32,12 @@ public class FoodTruckController {
   }
 
   @GetMapping
-  public ResponseEntity<List<FoodTruckCompletoDto>> obterCardapio() {
+  public ResponseEntity<List<FoodTruckCompletoDto>> obterPedido() {
     return new ResponseEntity<>(servico.obterTodas(), HttpStatus.OK);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<FoodTruckDto> obterPizza(@PathVariable String id) {
+  public ResponseEntity<FoodTruckDto> obterPedidoPorId(@PathVariable String id) {
     Optional<FoodTruckDto> retorno = servico.obterPorId(id);
 
     if (retorno.isPresent()) {
@@ -55,8 +55,8 @@ public class FoodTruckController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<FoodTruckCompletoDto> atualizarPedido(@PathVariable String id, @RequestBody FoodTruckCompletoDto pizza){
-    Optional<FoodTruckCompletoDto> retorno = servico.atualizarPorId(id, pizza); 
+  public ResponseEntity<FoodTruckCompletoDto> atualizarPedido(@PathVariable String id, @RequestBody FoodTruckCompletoDto pedido){
+    Optional<FoodTruckCompletoDto> retorno = servico.atualizarPorId(id, pedido); 
 
     if (retorno.isPresent()) {
       return new ResponseEntity<>(retorno.get(), HttpStatus.ACCEPTED);
