@@ -3,6 +3,14 @@
 		{
 			"name": "discovery-server",
 			"path": "discovery-server"
+		},
+		{
+			"name": "gateway",
+			"path": "gateway"
+		},
+		{
+			"name": "foodtruck",
+			"path": "foodtruck"
 		}
 	]
 }
