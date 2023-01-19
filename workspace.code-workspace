@@ -11,6 +11,13 @@
 		{
 			"name": "foodtruck",
 			"path": "foodtruck"
+		},
+		{
+			"name": "vendas",
+			"path": "vendas"
 		}
-	]
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
 }
