@@ -20,7 +20,7 @@ import br.com.tech4me.foodtruck.shared.FoodTruckDto;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/pedidos")
+@RequestMapping("/pedido")
 public class FoodTruckController {
   @Autowired
   private FoodTruckService servico;
