@@ -31,11 +31,14 @@ public class VendasServiceImp implements VendasService {
     }
 
     @Override
-    public List<VendasCompeloDto> obterVendas() {
+    public List<VendasDto> obterVendas() {
         List<Vendas> vendas = repository.findAll();
-        List<VendasCompeloDto> dto = vendas.stream()
-        .map(p -> new ModelMapper().map(p, VendasCompeloDto.class)).collect(Collectors.toList());
-        return dto;
+        List<VendasDto> listaVendas = vendas.stream()
+        .map(p -> new ModelMapper().map(p, VendasDto.class)).collect(Collectors.toList());
+        for(VendasDto venda : listaVendas){
+            venda.setDadosPedidos(vendasClient.obterVendas(venda.getIdVenda()));
+        }
+        return listaVendas;
     }
 
     @Override
@@ -58,7 +61,7 @@ public class VendasServiceImp implements VendasService {
     }
 
     @Override
-    public Optional<VendasDto> atualizarVendasPorId(String id, VendasDto dto) {
+    public Optional<VendasCompeloDto> atualizarVendasPorId(String id, VendasCompeloDto dto) {
         Optional<Vendas> retorno = repository.findById(id);
 
         if(retorno.isPresent()){
@@ -66,7 +69,7 @@ public class VendasServiceImp implements VendasService {
             .map(dto, Vendas.class);
             vendasRetorno.setId(id);
             repository.save(vendasRetorno);
-            return Optional.of(new ModelMapper().map(vendasRetorno, VendasDto.class));
+            return Optional.of(new ModelMapper().map(vendasRetorno,  VendasCompeloDto.class));
         }
         return Optional.empty();
     }

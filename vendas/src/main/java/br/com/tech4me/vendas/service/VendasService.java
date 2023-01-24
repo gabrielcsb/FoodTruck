@@ -9,9 +9,9 @@ import br.com.tech4me.vendas.shared.VendasDto;
 public interface VendasService {
 
     VendasCompeloDto CadastrarVendas(VendasCompeloDto dto);
-    List<VendasCompeloDto>obterVendas();
+    List<VendasDto>obterVendas();
     Optional<VendasDto> obterVendasPorId(String id);
     void excluirVendas(String id);
-    Optional<VendasDto> atualizarVendasPorId(String id ,VendasDto dto);
+    Optional< VendasCompeloDto> atualizarVendasPorId(String id , VendasCompeloDto dto);
     
 }

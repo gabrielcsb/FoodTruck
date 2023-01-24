@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient("pedidos")
+@FeignClient("pedido")
 public interface VendasClient {
     
-    @RequestMapping(method =RequestMethod.GET, value="/pedidos/{id}")
+    @RequestMapping(method =RequestMethod.GET, value="/pedido/{id}")
    Pedidos obterVendas(@PathVariable String id);
 }

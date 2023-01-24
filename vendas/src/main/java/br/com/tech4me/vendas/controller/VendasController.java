@@ -31,14 +31,14 @@ public class VendasController {
         return new ResponseEntity<>(servico.CadastrarVendas(pedido),HttpStatus.CREATED);
     }
 
-    //Buscar Pedidos
+    //Buscar vendas
     @GetMapping
-    public ResponseEntity<List<VendasCompeloDto>> obterVendas()
+    public ResponseEntity<List<VendasDto>> obterVendas()
     {
         return new ResponseEntity<>(servico.obterVendas(),HttpStatus.OK);
     } 
 
-    //Buscar pedido por id
+    //Buscar venda por id
     @GetMapping("/{id}")
     public ResponseEntity<VendasDto> obterVendasPorId(@PathVariable String id)
     {
@@ -51,7 +51,7 @@ public class VendasController {
         }    
     }
 
-    //Deletar Pedido
+    //Deletar venda
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirVendas(@PathVariable String id)
     {
@@ -59,10 +59,10 @@ public class VendasController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    //Atualizar pedido
+    //Atualizar venda
     @PutMapping("/{id}")
-    public ResponseEntity<VendasDto> atualizarVendas(@PathVariable String id, @Valid VendasDto pedido){
-        Optional<VendasDto> retorno = servico.atualizarVendasPorId(id, pedido);
+    public ResponseEntity<VendasCompeloDto> atualizarVendas(@PathVariable String id,@RequestBody @Valid VendasCompeloDto pedido){
+        Optional<VendasCompeloDto> retorno = servico.atualizarVendasPorId(id, pedido);
 
         if(retorno.isPresent()){
             return new ResponseEntity<>(retorno.get(),HttpStatus.ACCEPTED);
